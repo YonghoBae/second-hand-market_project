@@ -21,19 +21,21 @@
                 <div class="col-4">
                     <div class="item">
                         <div class="image">
-                            {% if question_image %}
-                            <img src="{{ question.image.url }}" alt="상품 이미지">
+                            {% if question.image %}
+                                <a href="{% url 'pybo:detail' question.id %}">
+                                    <img src="{{ question.image.url }}" style="width:250px; height:250px" alt="{{ question.subject }}" class="my-3">
+                                </a>
                             {% endif %}
                         </div>
                         <div class="details">
-                            <h3 class="title">
+                            <h4 class="title">
                                 <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
-                            </h3>
+                            </h4>
                             <p class="user">작성자: {{ question.author.username }}</p>
                             <p class="date">작성일: {{ question.create_date }}</p>
                             <p class="view">조회수:
                                 {% if question.view_count > 0 %}
-                                <span class="text-danger small mx-2">{{ question.view_count }}</span>
+                                    <span class="text-danger small mx-2">{{ question.view_count }}</span>
                                 {% endif %}
                             </p>
                         </div>
