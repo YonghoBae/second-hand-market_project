@@ -10,6 +10,7 @@ class Question(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
     voter = models.ManyToManyField(User, related_name='voter_question')  # 추천인 추가
     view_count = models.IntegerField(default=0)  # 조회수 필드 추가
+    image = models.ImageField(upload_to='images/', null=True, blank=True)  # 이미지 필드 추가
 
     def __str__(self):
         return self.subject
