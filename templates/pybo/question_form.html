@@ -28,11 +28,10 @@
             <textarea class="form-control" name="content"
                       id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
         </div>
-       <div class="mb-3">
-        <label for="image" class="form-label">이미지</label>
-        <input type="file" class="form-control" name="image" id="image">
+        <div class="mb-3">
+            <label for="image" class="form-label">이미지</label>
+            <input type="file" class="form-control" name="image" id="image">
         </div>
-         <button type="submit">이미지 첨부</button>
         <button type="submit" class="btn btn-primary">저장하기</button>
     </form>
 </div>
