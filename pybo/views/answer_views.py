@@ -52,3 +52,13 @@ def answer_delete(request, answer_id):
     else:
         answer.delete()
     return redirect('{}#answer_{}'.format(resolve_url('pybo:detail', question_id=answer.question.id), answer.id))
+
+
+@login_required(login_url='common:login')
+def answer_vote(request, answer_id):
+    answer = get_object_or_404(Answer, pk=answer_id)
+    if request.user in answer.voter.all():
+        answer.voter.remove(request.user)
+    else:
+        answer.voter.add(request.user)
+    return redirect('pybo:detail', question_id=answer.question.id)
