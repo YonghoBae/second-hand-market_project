@@ -15,6 +15,8 @@
             </div>
         </div>
     </div>
+    <hr>
+    <h1>최근 올라온 상품</h1>
     <div class="row">
         {% if question_list %}
             {% for question in question_list %}
@@ -31,7 +33,8 @@
                             <h4 class="title">
                                 <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
                             </h4>
-                            <p class="user">작성자: {{ question.author.username }}</p>
+                            <p class="price">가격: {{ question.price }}</p>
+                            <p class="user">판매자: {{ question.author.username }}</p>
                             <p class="date">작성일: {{ question.create_date }}</p>
                             <p class="view">조회수:
                                 {% if question.view_count > 0 %}
