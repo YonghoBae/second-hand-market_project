@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load pybo_filter %}
+{% load time_since %}
 {% block content %}
 <div class="container my-3">
     <div class="row my-3">
@@ -22,20 +23,20 @@
             {% for question in question_list %}
                 <div class="col-4">
                     <div class="item">
-                        <div class="image">
+                        <div class="card" style="width: 18rem;">
                             {% if question.image %}
                                 <a href="{% url 'pybo:detail' question.id %}">
                                     <img src="{{ question.image.url }}" style="width:250px; height:250px" alt="{{ question.subject }}" class="my-3">
                                 </a>
                             {% endif %}
                         </div>
-                        <div class="details">
+                        <div class="card" style="width: 18rem;">
                             <h4 class="title">
                                 <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
                             </h4>
                             <p class="price">가격: {{ question.price }}</p>
                             <p class="user">판매자: {{ question.author.username }}</p>
-                            <p class="date">작성일: {{ question.create_date }}</p>
+                            <p>{{ question.create_date|time_since }}</p>
                             <p class="view">조회수:
                                 {% if question.view_count > 0 %}
                                     <span class="text-danger small mx-2">{{ question.view_count }}</span>
@@ -43,6 +44,7 @@
                             </p>
                         </div>
                     </div>
+                    <br>
                 </div>
             {% endfor %}
         {% else %}
